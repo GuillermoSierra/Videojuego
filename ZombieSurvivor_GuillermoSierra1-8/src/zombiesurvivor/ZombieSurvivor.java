@@ -24,8 +24,7 @@ import personaje.Jugador;
  * - Salir del juego.
  * 
  * Además, contiene métodos auxiliares para mostrar el título del juego, imprimir las normas,
- * mostrar las credenciales del autor, y visualizar el historial de partidas tanto desde fichero
- * como desde la base de datos MySQL.
+ * mostrar las credenciales del autor, y visualizar el historial de partidas tanto desde fichero como desde la base de datos MySQL.
  */
 public class ZombieSurvivor {
     // Creo constantes para los colores que serán para toda la clase y todos los métodos de esta clase
