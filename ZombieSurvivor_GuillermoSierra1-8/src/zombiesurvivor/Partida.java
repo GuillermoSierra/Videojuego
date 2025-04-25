@@ -2,7 +2,8 @@ package zombiesurvivor;
 
 import java.time.LocalDateTime;
 import java.time.Duration;
-import java.time.format.DateTimeFormatter;
+
+import utilidades.Constantes;
 
 /**
  * FECHA: 28/04/2025
@@ -23,7 +24,6 @@ public class Partida {
     private int numMovimiento;
     private boolean victoria; // 1 Victoria 0 Derrota
     private long duracionSec;
-    private static final DateTimeFormatter FORMATO_HORA = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     /**
      * Constructor de la clase Partida. Inicializa una nueva partida con el nombre dado,
@@ -165,7 +165,7 @@ public class Partida {
      * @return Hora de inicio como cadena en formato HH:mm:ss o "N/A" si no está disponible.
      */
     public String getHoraInicioFormateada() {
-        return (fechaInicio != null) ? fechaInicio.format(FORMATO_HORA) : "N/A";
+        return (fechaInicio != null) ? fechaInicio.format(Constantes.FORMATO_HORA) : "N/A";
     }
     
     /**
@@ -174,7 +174,7 @@ public class Partida {
      * @return Hora de fin como cadena en formato HH:mm:ss o "En curso" si aún no ha finalizado.
      */
     public String getHoraFinFormateada() {
-        return (fechaFin != null) ? fechaFin.format(FORMATO_HORA) : "En curso";
+        return (fechaFin != null) ? fechaFin.format(Constantes.FORMATO_HORA) : "En curso";
     }
 
     /**

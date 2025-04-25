@@ -1,5 +1,7 @@
 package utilidades;
 
+import java.time.format.DateTimeFormatter;
+
 /**
  * FECHA: 28/04/2025
  * @author: Guillermo Sierra Castejón
@@ -66,5 +68,5 @@ public class Constantes {
     
     public static final String CREDENCIALES = "\nVideojuego creado por Guillermo Sierra Castejón, fecha de inicio 27/12/2024 ";
 
-
+    public static final DateTimeFormatter FORMATO_HORA = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 }
