@@ -1,0 +1,4 @@
+Jugador      | Inicio              | Fin                 | Movimiento | Resultado  | Duración  
+Guillermo    | 2025-04-24 20:09:27 | 2025-04-24 20:12:11 | 3          | Victoria   | 00:02:44  
+Alfredo      | 2025-04-24 20:15:57 | 2025-04-24 20:16:22 | 4          | Derrota    | 00:00:24  
+Marcos       | 2025-04-25 00:29:34 | 2025-04-25 00:29:37 | 2          | Derrota    | 00:00:02  
