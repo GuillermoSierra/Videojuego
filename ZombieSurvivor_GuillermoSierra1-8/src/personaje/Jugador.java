@@ -1,7 +1,9 @@
 package personaje;
 
 import java.util.ArrayList;
+
 import zombiesurvivor.Partida;
+import utilidades.Constantes;
 
 /**
  * FECHA: 28/04/2025
@@ -13,11 +15,6 @@ import zombiesurvivor.Partida;
 public class Jugador extends Personaje{
     private String nombre;
     private ArrayList<Partida> partidas;
-
-    private final int MAX_VIDA = 100;
-    private final int MIN_VIDA = 0;
-    private final int MAX_ENERGIA = 100;
-    private final int MIN_ENERGIA = 0;
 
     /**
      * Método constructor de Jugador, crea objetos Jugador
@@ -52,7 +49,7 @@ public class Jugador extends Personaje{
      * @return Valor mínimo de vida.
      */
     public int getMIN_VIDA() {
-        return MIN_VIDA;
+        return Constantes.MIN_VIDA;
     }
 
     /**
@@ -60,7 +57,7 @@ public class Jugador extends Personaje{
      * @return Valor mínimo de energía.
      */
     public int getMIN_ENERGIA() {
-        return MIN_ENERGIA;
+        return Constantes.MIN_ENERGIA;
     }
 
     // Método para agregar una partida
@@ -81,21 +78,21 @@ public class Jugador extends Personaje{
     public void modificarVidaEnergiaJugador(String tipo, int variacion) {
         if (tipo.equalsIgnoreCase("vida")) {
             int vida = this.getVida() + variacion;
-            if (vida > MAX_VIDA) { // valores configuracion como constantes
-                vida = MAX_VIDA;
+            if (vida > Constantes.MAX_VIDA) { // valores configuracion como constantes
+                vida = Constantes.MAX_VIDA;
             }
-            if (vida < MIN_VIDA) {
-                vida = MIN_VIDA;
+            if (vida < Constantes.MIN_VIDA) {
+                vida = Constantes.MIN_VIDA;
             }
             this.setVida(vida);
         } else if (tipo.equalsIgnoreCase("energia")) {
             int energia = this.getEnergia() + variacion;
             
-            if (energia > MAX_ENERGIA) {
-                energia = MAX_ENERGIA;
+            if (energia > Constantes.MAX_ENERGIA) {
+                energia = Constantes.MAX_ENERGIA;
             }
-            if (energia < MIN_ENERGIA) {
-                energia = MIN_ENERGIA;
+            if (energia < Constantes.MIN_ENERGIA) {
+                energia = Constantes.MIN_ENERGIA;
             }
             
             this.setEnergia(energia);

@@ -1,14 +1,16 @@
 package zombiesurvivor;
 
 import mapa.Mapa;
-import personaje.Jugador;
 import mapa.Lugar;
+import personaje.Jugador;
 import bbdd.ConexionBBDD;
+import utilidades.Constantes;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.util.ArrayList;
 
 /**
@@ -34,13 +36,6 @@ public class Juego {
     private ConexionBBDD conexionBBDD;
     private static ArrayList<Partida> historialPartidas = new ArrayList<>();
 
-    private final String COLOR_RESET = "\u001B[0m";
-    private final String COLOR_RED = "\u001B[31m";
-    private final String COLOR_GREEN = "\u001B[32m";
-    private final String COLOR_YELLOW = "\u001B[33m";
-    private final String COLOR_BLUE = "\u001B[34m";
-    private final String COLOR_PURPLE = "\u001B[35m";
-
     /**
      * Método constructor de la clase Juego
      */
@@ -55,9 +50,9 @@ public class Juego {
         // mapa.imprimeMapaLugares();
 
         Lugar lugar = mapa.getLugarPosJugador();
-        System.out.println(COLOR_PURPLE + jugador.getNombre() + COLOR_RESET + " estás es un/a: " + COLOR_BLUE + lugar.getNombre() + COLOR_RESET +
-                            " y tienes " + COLOR_GREEN + "vida: " + jugador.getVida() + COLOR_RESET + " y " + COLOR_YELLOW
-                            + "energia: " + jugador.getEnergia() + COLOR_RESET);
+        System.out.println(Constantes.COLOR_PURPLE + jugador.getNombre() + Constantes.COLOR_RESET + " estás es un/a: " + Constantes.COLOR_BLUE + lugar.getNombre() + Constantes.COLOR_RESET +
+                            " y tienes " + Constantes.COLOR_GREEN + "vida: " + jugador.getVida() + Constantes.COLOR_RESET + " y " + Constantes.COLOR_YELLOW
+                            + "energia: " + jugador.getEnergia() + Constantes.COLOR_RESET);
 
         conexionBBDD = new ConexionBBDD();
     }
@@ -103,7 +98,7 @@ public class Juego {
             System.out.println("\nTe has queado sin energía.");
         }
         if (jugador.getVida() <= jugador.getMIN_VIDA() || jugador.getEnergia() <= jugador.getMIN_ENERGIA()) {
-            System.out.println(COLOR_RED + "GAME OVER..." + COLOR_RESET);
+            System.out.println(Constantes.COLOR_RED + "GAME OVER..." + Constantes.COLOR_RESET);
         }
 
         if (mapa.getLugarPosJugador().getEsLugarSeguro()) {
@@ -128,13 +123,13 @@ public class Juego {
     private void imprimeEstadoJugadorMapa(){
         Lugar lugar = mapa.getLugarPosJugador();
         
-        System.out.println(COLOR_PURPLE + jugador.getNombre() + COLOR_RESET + " estás es un/a: " + COLOR_BLUE + lugar.getNombre() + COLOR_RESET +
-        " y varía la " + COLOR_GREEN + "vida: " + (lugar.getVidaObtenida() + mapa.getPosVidaQuitaZombie()) + COLOR_RESET +
-        " y la " + COLOR_YELLOW + "energia: " + (lugar.getEnergiaObtenida() + lugar.getCosteEnergia() + mapa.getPosEnergiaQuitaZombie()) + COLOR_RESET +
-        ". Por tanto tienes " + COLOR_GREEN + "vida: " + jugador.getVida() + COLOR_RESET + " y " + COLOR_YELLOW + "energia: " + jugador.getEnergia() + COLOR_RESET);
+        System.out.println(Constantes.COLOR_PURPLE + jugador.getNombre() + Constantes.COLOR_RESET + " estás es un/a: " + Constantes.COLOR_BLUE + lugar.getNombre() + Constantes.COLOR_RESET +
+        " y varía la " + Constantes.COLOR_GREEN + "vida: " + (lugar.getVidaObtenida() + mapa.getPosVidaQuitaZombie()) + Constantes.COLOR_RESET +
+        " y la " + Constantes.COLOR_YELLOW + "energia: " + (lugar.getEnergiaObtenida() + lugar.getCosteEnergia() + mapa.getPosEnergiaQuitaZombie()) + Constantes.COLOR_RESET +
+        ". Por tanto tienes " + Constantes.COLOR_GREEN + "vida: " + jugador.getVida() + Constantes.COLOR_RESET + " y " + Constantes.COLOR_YELLOW + "energia: " + jugador.getEnergia() + Constantes.COLOR_RESET);
 
-        System.out.println("El/La " + COLOR_BLUE + lugar.getNombre() + COLOR_RESET + " aporta vida: " + COLOR_GREEN + lugar.getVidaObtenida() + COLOR_RESET +
-        ", energía conseguida: " + COLOR_YELLOW + lugar.getEnergiaObtenida() + COLOR_RESET + ", energía consumida para ir al lugar: " + COLOR_YELLOW + lugar.getCosteEnergia() + COLOR_RESET);
+        System.out.println("El/La " + Constantes.COLOR_BLUE + lugar.getNombre() + Constantes.COLOR_RESET + " aporta vida: " + Constantes.COLOR_GREEN + lugar.getVidaObtenida() + Constantes.COLOR_RESET +
+        ", energía conseguida: " + Constantes.COLOR_YELLOW + lugar.getEnergiaObtenida() + Constantes.COLOR_RESET + ", energía consumida para ir al lugar: " + Constantes.COLOR_YELLOW + lugar.getCosteEnergia() + Constantes.COLOR_RESET);
         
         if (lugar.getTieneZombie()) {
             System.out.println("En este lugar hay " + lugar.getNumZombies() + " zombies" + lugar.toStringZombies());

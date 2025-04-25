@@ -1,7 +1,9 @@
 package mapa;
 
 import java.util.Arrays;
+
 import personaje.Zombie;
+import utilidades.Constantes;
 
 /**
  * FECHA: 28/04/2025
@@ -22,21 +24,6 @@ public class Lugar {
     private boolean tieneZombie; // No todos los lugares tienen zombies, hay lugares que puede tener hasta 3 zombies. Está relacionado con el atributo grupoZombie
     private int vidaObtenida; // Al llegar a un lugar el jugador obtiene vida en a base a lo que encuentre en el lugar. Maás adelante en futura versión veremos como añadir que este valor se base en pruebas, mini juegos, etc
     private int energiaObtenida; // El jugador podrá encontrar Comida, medicinas, etc
-
-    private final int COSTE_ENERGIA_POSITIVO = 19;
-    private final int COSTE_ENERGIA_NEGATIVO = 20;
-    private final int VIDA_ENERGIA_OBTENIDA = 41;
-
-    private final int MAX_VIDA = 100;
-    private final int MAX_ENERGIA = 100;
-
-    private final String[] LUGARES = {"Comisaría", "Centro comercial", 
-                                "Centro deportivo", "Cárcel", "Vertedero", "Base militar", "Puerto marítimo",
-                                "Aeropuerto", "Estación de tren", "Biblioteca", "Universidad", "Colegio",
-                                "Museo", "Teatro", "Parque", "Zoológico", "Restaurante",
-                                "Hotel", "Iglesia", "Granja", "Laboratorio", "Fábrica",
-                                "Autopista", "Cementerio", "Mirador", "Puente", "Rascacielos",
-                                "Estadio", "Gimnasio", "Plaza", "Piscina", "Casa", "Cine", "Hospital"};
     
     /**
      * Método constructor de Lugar, crea objetos Lugar 
@@ -52,19 +39,19 @@ public class Lugar {
 
         if (esLugarSeguro) {
             nombre = "Lugar Seguro";
-            vidaObtenida = MAX_VIDA;
-            energiaObtenida = MAX_ENERGIA;
+            vidaObtenida = Constantes.MAX_VIDA;
+            energiaObtenida = Constantes.MAX_ENERGIA;
         } else {
-            int lugarAleatorio = (int) (Math.random() * LUGARES.length);
+            int lugarAleatorio = (int) (Math.random() * Constantes.LUGARES.length);
 
-            nombre = LUGARES[lugarAleatorio];
+            nombre = Constantes.LUGARES[lugarAleatorio];
 
             // Este random genera un número del 0-18 y le resta 20 a este número
             // Obtenemos un rango de osteEnergia de -2 a -20
-            costeEnergia= (int) (Math.random() * COSTE_ENERGIA_POSITIVO) - COSTE_ENERGIA_NEGATIVO;
+            costeEnergia= (int) (Math.random() * Constantes.COSTE_ENERGIA_POSITIVO) - Constantes.COSTE_ENERGIA_NEGATIVO;
 
-            vidaObtenida = (int) (Math.random() * VIDA_ENERGIA_OBTENIDA);
-            energiaObtenida = (int) (Math.random() * VIDA_ENERGIA_OBTENIDA);
+            vidaObtenida = (int) (Math.random() * Constantes.VIDA_ENERGIA_OBTENIDA);
+            energiaObtenida = (int) (Math.random() * Constantes.VIDA_ENERGIA_OBTENIDA);
         }
     }
 

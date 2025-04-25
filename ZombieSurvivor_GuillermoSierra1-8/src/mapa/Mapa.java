@@ -1,5 +1,8 @@
 package mapa;
 
+import utilidades.Utilidades;
+import utilidades.Constantes;
+
 /**
  * FECHA: 28/04/2025
  * @author: Guillermo Sierra Castejón
@@ -8,13 +11,7 @@ package mapa;
  * Gestiona la generación de lugares, la colocación de zombies y el control del movimiento del jugador. 
  * También maneja la representación visual del mapa mediante un tablero.
  */
-import utilidades.Utilidades;
-
 public class Mapa {
-
-    private final String COLOR_RESET = "\u001B[0m";
-    private final String COLOR_RED = "\u001B[31m";
-    private final String COLOR_CYAN = "\u001B[36m";
     
     private int tamanioMaxX;
     private int tamanioMaxY;
@@ -27,10 +24,6 @@ public class Mapa {
 
     private int posJugadorX;
     private int posJugadorY;
-
-    private final int MOVIMIENTO_SALIR = 1;
-    private final int MOVIMIENTO_CORRECTO = 2;
-    private final int MOVIMIENTO_ERRONEO = 3;
 
     /**
      * Método constructor de Mapa, crea objetos Mapa
@@ -98,7 +91,7 @@ public class Mapa {
      * @return El valor de la constante "MOVIMIENTO_SALIR", que representa la acción de salida.
      */
     public int getMovimientoSalir(){
-        return MOVIMIENTO_SALIR;
+        return Constantes.MOVIMIENTO_SALIR;
     }
 
     /**
@@ -106,7 +99,7 @@ public class Mapa {
      * @return El valor de la constante "MOVIMIENTO_CORRECTO", que indica un movimiento permitido.
      */
     public int getMovimientoCorrecto(){
-        return MOVIMIENTO_CORRECTO;
+        return Constantes.MOVIMIENTO_CORRECTO;
     }
 
     /**
@@ -187,7 +180,7 @@ public class Mapa {
      * @return Devuelve Si es un movimiento correcto
      */
     public int movimiento(String desplazamiento) {
-        int movimientoCorrecto = MOVIMIENTO_CORRECTO;
+        int movimientoCorrecto = Constantes.MOVIMIENTO_CORRECTO;
 
         // La función de .toUpperCase() es para que acepte mayúsculas y minúsculas
         switch (desplazamiento.toUpperCase()) {
@@ -237,15 +230,15 @@ public class Mapa {
 
             case "SA":
                 System.out.println("Fin de la partida. ¡Gracias por jugar!");
-                movimientoCorrecto = MOVIMIENTO_SALIR;
+                movimientoCorrecto = Constantes.MOVIMIENTO_SALIR;
                 break;
             
             default:
                 System.out.println("Caracter no válido. Introduzca una movimiento válido.");
-                movimientoCorrecto = MOVIMIENTO_ERRONEO;
+                movimientoCorrecto = Constantes.MOVIMIENTO_ERRONEO;
         }
         
-        if (movimientoCorrecto == MOVIMIENTO_CORRECTO) {
+        if (movimientoCorrecto == Constantes.MOVIMIENTO_CORRECTO) {
             controlMovimiento();
         }
         
@@ -297,17 +290,17 @@ public class Mapa {
                 // if para imprimir la 'J' en color rojo y si por algún casual no fuera 'J' que
                 // se imprima sin color
                 if (tablero[x][y] == "J") {
-                    System.out.print(COLOR_RED + tablero[x][y] + COLOR_RESET);
+                    System.out.print(Constantes.COLOR_RED + tablero[x][y] + Constantes.COLOR_RESET);
                 } else {
                     System.out.print(tablero[x][y]);
                 }
                 if (y < 5) {
-                    System.out.print(COLOR_CYAN + " | " + COLOR_RESET);
+                    System.out.print(Constantes.COLOR_CYAN + " | " + Constantes.COLOR_RESET);
                 }
             }
             System.out.println(); // Bajamos línea
             if (x > 0) { // Evitar la última línea divisoria
-                System.out.println(COLOR_CYAN + " ---+---+---+---+---+---" + COLOR_RESET);
+                System.out.println(Constantes.COLOR_CYAN + " ---+---+---+---+---+---" + Constantes.COLOR_RESET);
             }
         }
         System.out.println("  0   1   2   3   4   5");
@@ -331,18 +324,7 @@ public class Mapa {
      * Devuelve la dirección que elije el jugador para desplazarse
      */
     public String leerMovimiento() {
-        String posiblesDirecciones = "\n¿Dónde deseas desplazarte?" +
-                "\nN - Norte" + "\t\t\t\t\tN\n" +
-                "S - Sur" + "\t\t\t\t\t  NO   @@@   NE\n" +
-                "E - Este" + "\t\t\t\t     @@   @@\n" +
-                "O - Oeste" + "\t\t\t\t    @@     @@\n" +
-                "NE - Noreste" + "\t\t\t\t O @@       @@ E\n" +
-                "SE - Sudeste" + "\t\t\t\t    @@     @@\n" +
-                "SO - Sudoeste" + "\t\t\t\t     @@   @@\n" +
-                "NO - Noroeste" + "\t\t\t\t  SO   @@@   SE\n" +
-                "SA - Salir" + "\t\t\t\t\tS\n";
-
-        String direccion = Utilidades.leerEntrada(posiblesDirecciones);
+        String direccion = Utilidades.leerEntrada(Constantes.POSIBLES_DIRECCIONES);
         return direccion;
     }
 }

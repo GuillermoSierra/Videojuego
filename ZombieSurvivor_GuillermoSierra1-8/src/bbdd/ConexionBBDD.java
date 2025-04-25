@@ -5,11 +5,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.sql.ResultSet;
 
+import java.time.LocalDateTime;
+
+import java.util.ArrayList;
+
 import zombiesurvivor.Partida;
+import utilidades.Constantes;
 
 /**
  * FECHA: 28/04/2025
@@ -26,9 +29,6 @@ import zombiesurvivor.Partida;
  * para intercambiar datos entre la lógica del juego y la base de datos.
  */ 
 public class ConexionBBDD {
-    private final String URL = "jdbc:mysql://localhost:3306/zombiesurvivor";
-    private final String USER= "root";
-    private final String PASSWORD = "Password1234";
     private Connection cnx;
 
     /**
@@ -39,7 +39,7 @@ public class ConexionBBDD {
      */
     public ConexionBBDD() {
         try {
-            this.cnx = DriverManager.getConnection(URL, USER, PASSWORD);
+            this.cnx = DriverManager.getConnection(Constantes.URL, Constantes.USER, Constantes.PASSWORD);
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         } catch (Exception e){

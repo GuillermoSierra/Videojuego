@@ -69,4 +69,43 @@ public class Constantes {
     public static final String CREDENCIALES = "\nVideojuego creado por Guillermo Sierra Castejón, fecha de inicio 27/12/2024 ";
 
     public static final DateTimeFormatter FORMATO_HORA = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    public static final int VIDA_ENERGIA_POSITIVO = 26;
+    public static final int VIDA_ENERGIA_NEGATIVO = 35;
+
+    public static final int MAX_VIDA = 100;
+    public static final int MIN_VIDA = 0;
+    public static final int MAX_ENERGIA = 100;
+    public static final int MIN_ENERGIA = 0;
+
+    public static final int MOVIMIENTO_SALIR = 1;
+    public static final int MOVIMIENTO_CORRECTO = 2;
+    public static final int MOVIMIENTO_ERRONEO = 3;
+
+    public static final String POSIBLES_DIRECCIONES = "\n¿Dónde deseas desplazarte?" +
+                "\nN - Norte" + "\t\t\t\t\tN\n" +
+                "S - Sur" + "\t\t\t\t\t  NO   @@@   NE\n" +
+                "E - Este" + "\t\t\t\t     @@   @@\n" +
+                "O - Oeste" + "\t\t\t\t    @@     @@\n" +
+                "NE - Noreste" + "\t\t\t\t O @@       @@ E\n" +
+                "SE - Sudeste" + "\t\t\t\t    @@     @@\n" +
+                "SO - Sudoeste" + "\t\t\t\t     @@   @@\n" +
+                "NO - Noroeste" + "\t\t\t\t  SO   @@@   SE\n" +
+                "SA - Salir" + "\t\t\t\t\tS\n";
+    
+    public static final int COSTE_ENERGIA_POSITIVO = 19;
+    public static final int COSTE_ENERGIA_NEGATIVO = 20;
+    public static final int VIDA_ENERGIA_OBTENIDA = 41;
+            
+    public static final String[] LUGARES = {"Comisaría", "Centro comercial", 
+                                            "Centro deportivo", "Cárcel", "Vertedero", "Base militar", "Puerto marítimo",
+                                            "Aeropuerto", "Estación de tren", "Biblioteca", "Universidad", "Colegio",
+                                            "Museo", "Teatro", "Parque", "Zoológico", "Restaurante",
+                                            "Hotel", "Iglesia", "Granja", "Laboratorio", "Fábrica",
+                                            "Autopista", "Cementerio", "Mirador", "Puente", "Rascacielos",
+                                            "Estadio", "Gimnasio", "Plaza", "Piscina", "Casa", "Cine", "Hospital"};
+
+    public static final String URL = "jdbc:mysql://localhost:3306/zombiesurvivor";
+    public static final String USER= "root";
+    public static final String PASSWORD = "Password1234";
 }

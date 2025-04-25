@@ -12,9 +12,6 @@ public class Utilidades {
     
     private static Scanner sc = new Scanner(System.in);
 
-    private static final String COLOR_GREEN = "\u001B[32m";
-    private static final String COLOR_RESET = "\u001B[0m";
-
     /**
      * Método creado para leer cualquier carácter introducido por el usuario
      * @param textoPorPantalla Imprime el texto que hay por la pantalla
@@ -22,7 +19,7 @@ public class Utilidades {
     public static void pulsaTecla(String textoPorPantalla){
         try {
             System.out.println(textoPorPantalla);
-            System.out.print("\nPresione " + COLOR_GREEN + "cualquier carácter " + COLOR_RESET + "para continuar: ");
+            System.out.print("\nPresione " + Constantes.COLOR_GREEN + "cualquier carácter " + Constantes.COLOR_RESET + "para continuar: ");
             System.in.read();
             sc.nextLine();
         } catch (Exception errorEnterCredenciales) {
