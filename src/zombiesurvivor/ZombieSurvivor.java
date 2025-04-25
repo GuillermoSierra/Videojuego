@@ -167,6 +167,8 @@ public class ZombieSurvivor {
             String jugadorBuscado = Utilidades.leerEntrada("Introduce el nombre del jugador para ver sus partidas: ").toLowerCase();
 
             System.out.println("\n------ PARTIDAS GUARDADAS DE " + jugadorBuscado.toUpperCase() + " ------");
+            System.out.printf("%-12s | %-19s | %-19s | %-5s | %-10s | %-10s%n",
+            "Jugador", "Inicio", "Fin", "Movimiento", "Resultado", "Duración");
 
             try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
                 String linea;
