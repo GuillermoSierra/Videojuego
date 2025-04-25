@@ -1,15 +1,16 @@
 package zombiesurvivor;
 
-import utilidades.Utilidades;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
 import java.util.ArrayList;
 
 import bbdd.ConexionBBDD;
 import personaje.Jugador;
+import utilidades.Constantes;
+import utilidades.Utilidades;
 
 /**
  * FECHA: 28/04/2025
@@ -27,11 +28,6 @@ import personaje.Jugador;
  * mostrar las credenciales del autor, y visualizar el historial de partidas tanto desde fichero como desde la base de datos MySQL.
  */
 public class ZombieSurvivor {
-    // Creo constantes para los colores que serán para toda la clase y todos los métodos de esta clase
-    private static final String COLOR_RESET = "\u001B[0m";
-    private static final String COLOR_RED = "\u001B[31m";
-    private static final String COLOR_PURPLE = "\u001B[35m";
-
     /**
      * Método creado para controlar el juego mediante la opción seleccionada por el jugador
      */
@@ -40,7 +36,7 @@ public class ZombieSurvivor {
         imprimeTitulo();
 
         int opcionMenuSeleccionado;
-        final int FINALIZARPROGRAMA = 6;
+        
         do {
             // Llamada al método menu y el número escrito por el usuario determina que hace en el switch case
             opcionMenuSeleccionado = opcionMenu();
@@ -75,7 +71,7 @@ public class ZombieSurvivor {
                     System.out.println("\nFin del programa. ¡Gracias por jugar!");
                     break;
             }
-        } while (opcionMenuSeleccionado != FINALIZARPROGRAMA);
+        } while (opcionMenuSeleccionado != Constantes.FINALIZARPROGRAMA);
         Utilidades.cerrarScanner();
     }
 
@@ -87,11 +83,11 @@ public class ZombieSurvivor {
         int opcionMenu = -1;
 
         do {
-            System.out.println(COLOR_PURPLE + "\t\t\t\t  __  __ _____ _   _ _   _ \n" +
+            System.out.println(Constantes.COLOR_PURPLE + "\t\t\t\t  __  __ _____ _   _ _   _ \n" +
                     "\t\t\t\t |  \\/  | ____| \\ | | | | |\n" +
                     "\t\t\t\t | |\\/| |  _| |  \\| | | | |\n" +
                     "\t\t\t\t | |  | | |___| |\\  | |_| |\n" +
-                    "\t\t\t\t |_|  |_|_____|_| \\_|\\___/ \n" + COLOR_RESET);
+                    "\t\t\t\t |_|  |_|_____|_| \\_|\\___/ \n" + Constantes.COLOR_RESET);
             String opcionesMenu = "1) Normas y reglas del juego" +
                                 "\n2) Empezar a jugar" +
                                 "\n3) Credenciales y fecha de creación" +
@@ -109,50 +105,21 @@ public class ZombieSurvivor {
      * Método creado para imprimir el título del videojuego
      */
     private static void imprimeTitulo() {
-        System.out.println(COLOR_RED
-                + "███████╗ ██████╗ ███╗   ███╗██████╗ ██╗███████╗███████╗██╗   ██╗██████╗ ██╗   ██╗██╗██╗   ██╗ ██████╗ ██████╗ \n" +
-                "╚══███╔╝██╔═══██╗████╗ ████║██╔══██╗██║██╔════╝██╔════╝██║   ██║██╔══██╗██║   ██║██║██║   ██║██╔═══██╗██╔══██╗\n" +
-                "  ███╔╝ ██║   ██║██╔████╔██║██████╔╝██║█████╗  ███████╗██║   ██║██████╔╝██║   ██║██║██║   ██║██║   ██║██████╔╝\n" +
-                " ███╔╝  ██║   ██║██║╚██╔╝██║██╔══██╗██║██╔══╝  ╚════██║██║   ██║██╔══██╗╚██╗ ██╔╝██║╚██╗ ██╔╝██║   ██║██╔══██╗\n" +
-                "███████╗╚██████╔╝██║ ╚═╝ ██║██████╔╝██║███████╗███████║╚██████╔╝██║  ██║ ╚████╔╝ ██║ ╚████╔╝ ╚██████╔╝██║  ██║\n" +
-                "╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═══╝   ╚═════╝ ╚═╝  ╚═╝\n"
-                + COLOR_RESET + "");
+        System.out.println(Constantes.TITULO);
     }
 
     /**
      * Método creado que imprime las normas si eliges la opción 1 del método menu
      */
     private static void imprimeNormas() {
-        final String NORMAS = COLOR_RED + "- " + COLOR_RESET
-                    + "Aparecerás en un lugar aleatorio y tienes que moverte por el tablero introduciendo una coordenada: " +
-                    COLOR_RED + "\n\t1. " + COLOR_RESET + "Norte (N) dirección arriba" +
-                    COLOR_RED + "\n\t2. " + COLOR_RESET + "Noreste (NE) dirección arriba a la derecha" +
-                    COLOR_RED + "\n\t3. " + COLOR_RESET + "Este (E) dirección a la derecha" +
-                    COLOR_RED + "\n\t4. " + COLOR_RESET + "Sudeste (SE) dirección abajo a la derecha" +
-                    COLOR_RED + "\n\t5. " + COLOR_RESET + "Sur (S) dirección abajo" +
-                    COLOR_RED + "\n\t6. " + COLOR_RESET + "Sudoeste (SO) dirección abajo a la izquierda" +
-                    COLOR_RED + "\n\t7. " + COLOR_RESET + "Oeste (O) dirección izquierda" +
-                    COLOR_RED + "\n\t8. " + COLOR_RESET + "Noroeste (NE) dirección arriba a la izquierda." +
-                    COLOR_RED + "\n- " + COLOR_RESET
-                    + "Si no añades ninguno de los caracteres que está entre paréntesis te volverá a preguntar otra vez para que introduzcas alguno de los caracteres solicitados." +
-                    COLOR_RED + "\n- " + COLOR_RESET
-                    + "Si deseas salir de la partida tendrás que introducir (SA) de Salida o llegar al Lugar Seguro." +
-                    COLOR_RED + "\n- " + COLOR_RESET + "No se distingue entre mayúsculas y minúsculas." +
-                    COLOR_RED + "\n- " + COLOR_RESET
-                    + "Hay lugares en los que recuperas siempre vida y resistencia que son campamentos" +
-                    COLOR_RED + "\n- " + COLOR_RESET
-                    + "También hay lugares en los que ganaras o perderás vida dependiendo de tus elecciones de toma de caminos." +
-                    COLOR_RED + "\n- " + COLOR_RESET
-                    + "Debes controlar la vida y la energía que tienes para no perder la partida.";
-        Utilidades.pulsaTecla(NORMAS);
+        Utilidades.pulsaTecla(Constantes.NORMAS);
     }
 
     /**
      * Método creado que imprime las credenciales si eliges la opción 3 del método menu
      */
     private static void imprimeCredenciales() {
-        final String CREDENCIALES = "\nVideojuego creado por Guillermo Sierra Castejón, fecha de inicio 27/12/2024 ";
-        Utilidades.pulsaTecla(CREDENCIALES);
+        Utilidades.pulsaTecla(Constantes.CREDENCIALES);
     }
 
     /**
