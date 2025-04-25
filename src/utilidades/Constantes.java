@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
  * FECHA: 28/04/2025
  * @author: Guillermo Sierra Castejón
  * @version: 1.8
- * DESCRIPCIÓN: 
+ * DESCRIPCIÓN: Fichero que contiene todas las constantes para tenerlas controladas desde aqui
  */
 public class Constantes {
     public static final String COLOR_RESET = "\u001B[0m";
